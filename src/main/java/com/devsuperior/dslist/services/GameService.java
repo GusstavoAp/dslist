@@ -10,6 +10,8 @@ import java.util.List;
 
 
 //registrar o componente no Spring (framework)
+//Camada se serviço (Componente Intermediário) --> lógica do negócio:
+// exemplo, registrar pedido: baixar e verificar o estoque, enviar email avisando, processar cartão de crédito etc.
 @Service //anotação para registro
 public class GameService {
 
