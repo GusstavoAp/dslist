@@ -14,7 +14,7 @@ public interface GameRepository extends JpaRepository<Game, Long> {
     //nativeQuery = true precisa colocar para funcionar o SQL
     //O resultado da consulta precisa ser uma interface que no Spring é o Projection
     @Query(nativeQuery = true, value = """
-		SELECT tb_game.id, tb_game.title, tb_game.game_year AS `year`, tb_game.img_url AS imgUrl,
+		SELECT tb_game.id, tb_game.title, tb_game.game_year AS gameYear, tb_game.img_url AS imgUrl,
 		tb_game.short_description AS shortDescription, tb_belonging.position
 		FROM tb_game
 		INNER JOIN tb_belonging ON tb_game.id = tb_belonging.game_id
