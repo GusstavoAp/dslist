@@ -3,6 +3,7 @@ package com.devsuperior.dslist.services;
 import com.devsuperior.dslist.DTO.GameDTO;
 import com.devsuperior.dslist.DTO.GameMinDTO;
 import com.devsuperior.dslist.entities.Game;
+import com.devsuperior.dslist.projections.GameMinProjection;
 import com.devsuperior.dslist.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,18 @@ public class GameService {
         //Convertendo cada objeto para "GameMinDTO"
         return result.stream().map(x -> new GameMinDTO(x)).toList();//permite operação com sequencia de dados
     }
+
+
+    //Meu Service devolve uma lista desses objetos respeitando a arquitetura
+    @Transactional(readOnly = true)
+    //receber o Id da lista e retornar os Id das listas
+    public List<GameMinDTO> findByList(Long ListId){
+        //devolve uma lista de objetos
+        List<GameMinProjection> result = gameRepository.searchByList(ListId);
+        return result.stream().map(x -> new GameMinDTO(x)).toList();//permite operação com sequencia de dados
+    }
+
+
 
 
 }
