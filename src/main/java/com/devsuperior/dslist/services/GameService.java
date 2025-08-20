@@ -25,6 +25,7 @@ public class GameService {
     //Garante que a operação com banco de dados vai obedecer aos principios das transações do ACID, ou seja, que seja ATOMICA, CONSISTENTE,ISOLADA E DURAVEL
     @Transactional(readOnly = true) //Do Spring, não do Jakarta//"Read Only" estou garantindo que não vou fazer nenhuma operação de escrita, ou seja, não vou bloquear meu BD para escirta
     public GameDTO findById(Long id){
+        //O próprio Spring Data JPA cria esse objeto Game com os dados do banco e entrega pronto.
         Game result = gameRepository.findById(id).get();
         return new GameDTO(result);
     }
